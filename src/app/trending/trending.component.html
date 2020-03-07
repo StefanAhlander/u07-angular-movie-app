@@ -1,0 +1,5 @@
+<app-ratings></app-ratings>
+
+<div *ngFor="let movie of movies">
+  <app-movie-list-item *ngIf="movies" [movie]="movie"></app-movie-list-item>
+</div>

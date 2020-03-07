@@ -1,0 +1,12 @@
+<div class="card mb-2" style="max-width: 22rem; width: 100%;">
+  <img class="card-img-top" [src]="getImageUri(movie)" alt="Card image cap" />
+  <div class="card-body">
+    <h5 class="card-title">{{ movie.title }}</h5>
+    <p class="card-text">
+      {{ movie.overview }}
+    </p>
+    <a routerLink="/movies/{{ movie.id }}" class="btn btn-dark"
+      >Movie details</a
+    >
+  </div>
+</div>

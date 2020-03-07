@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-secondary mt-2 mb-2" (click)="goBack()">
+  Go back
+</button>
+
+<div *ngIf="movie">
+  <div class="card mb-2" style="max-width: 22rem; width: 100%;">
+    <h5 class="card-header text-center">{{ movie.title }}</h5>
+    <img class="card-img-top" [src]="getImageUri(movie)" alt="Card image cap" />
+    <div class="card-body">
+      <p class="card-text">
+        {{ movie.overview }}
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center">
+          <span *ngFor="let genre of movie.genres">
+            {{ genre.name }}&nbsp;&nbsp;
+          </span>
+        </li>
+        <li class="list-group-item">Released: {{ movie.release_date }}</li>
+        <li class="list-group-item">Average vote: {{ movie.vote_average }}</li>
+        <li *ngIf="movie.homepage" class="list-group-item text-center">
+          <a class="btn btn-dark" href="{{ movie.homepage }}"
+            >Go to Movie web site!</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+  {{ credits | json }}
+</div>

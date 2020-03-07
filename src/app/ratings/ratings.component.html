@@ -1,0 +1,64 @@
+<div *ngIf="response" class="bg-light mb-2">
+  <h4 class="ml-2">Filter by region and ratings</h4>
+
+  <div class="btn-group mb-2">
+    <div class="dropdown ml-2 mr-2">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Region: {{ currentRegion }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a
+          class="dropdown-item"
+          *ngFor="let region of regions"
+          (click)="onRegionChange(region)"
+          >{{ region }}</a
+        >
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Rating: {{ currentRating }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a
+          class="dropdown-item"
+          *ngFor="let rating of ratings"
+          (click)="onRatingChange(rating.certification)"
+          >{{ rating.certification }}</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="btn btn-dark ml-2 mb-2"
+    type="button"
+    data-toggle="collapse"
+    data-target="#ratingsDetails"
+    aria-expanded="false"
+    aria-controls="ratingsDetails"
+  >
+    Click for details about ratings
+  </button>
+
+  <div class="collapse" id="ratingsDetails">
+    <div class="card card-body">
+      {{ ratingDesc }}
+    </div>
+  </div>
+</div>
