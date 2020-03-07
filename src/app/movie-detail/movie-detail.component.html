@@ -1,32 +1,67 @@
-<button type="button" class="btn btn-secondary mt-2 mb-2" (click)="goBack()">
+<button
+  type="button"
+  class="btn btn-secondary mt-2 mb-2 ml-2"
+  (click)="goBack()"
+>
   Go back
 </button>
 
 <div *ngIf="movie">
-  <div class="card mb-2" style="max-width: 22rem; width: 100%;">
-    <h5 class="card-header text-center">{{ movie.title }}</h5>
-    <img class="card-img-top" [src]="getImageUri(movie)" alt="Card image cap" />
-    <div class="card-body">
-      <p class="card-text">
-        {{ movie.overview }}
-      </p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item text-center">
-          <span *ngFor="let genre of movie.genres">
-            {{ genre.name }}&nbsp;&nbsp;
-          </span>
-        </li>
-        <li class="list-group-item">Released: {{ movie.release_date }}</li>
-        <li class="list-group-item">Average vote: {{ movie.vote_average }}</li>
-        <li *ngIf="movie.homepage" class="list-group-item text-center">
-          <a class="btn btn-dark" href="{{ movie.homepage }}"
-            >Go to Movie web site!</a
-          >
-        </li>
-      </ul>
+  <div class="row justify-content-center">
+    <div class="card mb-2 col-12 col-sm-10 col-md-8 col-lg-6">
+      <h5 class="card-header text-center">{{ movie.title }}</h5>
+      <img
+        class="card-img-top"
+        [src]="getImageUri(movie)"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          {{ movie.overview }}
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center">
+            <span *ngFor="let genre of movie.genres">
+              {{ genre.name }}&nbsp;&nbsp;
+            </span>
+          </li>
+          <li class="list-group-item">Released: {{ movie.release_date }}</li>
+          <li class="list-group-item">
+            Average vote: {{ movie.vote_average }}
+          </li>
+          <li *ngIf="movie.homepage" class="list-group-item text-center">
+            <a class="btn btn-dark" href="{{ movie.homepage }}"
+              >Go to Movie web site!</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <hr />
-  {{ credits | json }}
+  <h2 class="font-weight-light text-center">
+    Cast
+  </h2>
+  <div class="container-fluid" style="overflow-x: scroll;">
+    <div class="d-flex flex-row flex-nowrap">
+      <div *ngFor="let actor of cast" class="col-7 col-sm-5 col-md-3 col-lg-2">
+        <div class="card">
+          <img
+            class="card-img-top"
+            [src]="getActorProfileUri(actor)"
+            alt="Card image cap"
+          />
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Character: {{ actor.character }}</li>
+            <li class="list-group-item">Name: {{ actor.name }}</li>
+            <li class="list-group-item text-center">
+              <a class="btn btn-dark" routerLink="actors/{{ actor.id }}"
+                >More info.</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

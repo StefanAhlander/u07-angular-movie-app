@@ -5,6 +5,7 @@ import { API_CONFIG } from '../../api-config';
 
 import { MovieApiService } from '../movie-api.service';
 import { Movie } from '../models/movie.model';
+import { Actor } from '../models/Actor.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -14,6 +15,7 @@ import { Movie } from '../models/movie.model';
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   credits: object;
+  cast: any[];
   id: number;
   imageUri = API_CONFIG['image-url'];
 
@@ -36,14 +38,22 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getCredits(): void {
-    this.movieApiService
-      .getMovieCredits(this.id)
-      .subscribe(credits => (this.credits = credits));
+    this.movieApiService.getMovieCredits(this.id).subscribe(credits => {
+      this.credits = credits;
+      this.cast = credits.cast.sort((a, b) => a.order - b.order);
+    });
   }
 
   getImageUri(movie: Movie): string {
     if (movie.poster_path) {
       return this.imageUri + movie.poster_path;
+    }
+    return '../../assets/film-placeholder.jpg';
+  }
+
+  getActorProfileUri(actor: Actor): string {
+    if (actor.profile_path) {
+      return this.imageUri + actor.profile_path;
     }
     return '../../assets/film-placeholder.jpg';
   }
