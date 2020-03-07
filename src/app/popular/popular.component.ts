@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { Movie } from '../models/Movie.model';
 
 @Component({
-  selector: 'app-trending',
-  templateUrl: './trending.component.html',
-  styleUrls: ['./trending.component.scss']
+  selector: 'app-popular',
+  templateUrl: './popular.component.html',
+  styleUrls: ['./popular.component.scss']
 })
-export class TrendingComponent implements OnInit {
+export class PopularComponent implements OnInit {
   movies: Movie[];
   region: string;
   rating: string;
@@ -26,15 +26,15 @@ export class TrendingComponent implements OnInit {
       .subscribe(regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;
-        this.getTrending();
+        this.getPopular();
       });
 
     this.ratingsService.resendRegionsAndRatings();
   }
 
-  getTrending(): any {
+  getPopular(): any {
     this.movieApiService
-      .getTrendingMovies()
+      .index(this.region, this.rating, 'popular')
       .subscribe(movies => (this.movies = movies.results));
   }
 }

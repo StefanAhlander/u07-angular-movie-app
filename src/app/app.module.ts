@@ -12,12 +12,14 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { TrendingComponent } from './trending/trending.component';
+import { MovieListItemComponent } from './movie-list-item/movie-list-item.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { PopularComponent } from './popular/popular.component';
+import { HighestRatedComponent } from './highest-rated/highest-rated.component';
 
 // Services
 import { MovieApiService } from './movie-api.service';
 import { RatingsService } from './ratings.service';
-import { MovieListItemComponent } from './movie-list-item/movie-list-item.component';
-import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     RatingsComponent,
     TrendingComponent,
     MovieListItemComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    PopularComponent,
+    HighestRatedComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [MovieApiService, RatingsService],

@@ -18,10 +18,14 @@ export class RatingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateVars();
+    this.ratingsService.resendRegionsAndRatings();
   }
 
   populateVars(): void {
     this.ratingsService.getRegionAndRating().subscribe((data: any) => {
+      if (data.response === undefined) {
+        return;
+      }
       this.response = data.response;
       this.regions = data.regions;
       this.currentRegion = data.region;

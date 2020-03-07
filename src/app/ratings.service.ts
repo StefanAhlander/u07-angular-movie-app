@@ -50,15 +50,6 @@ export class RatingsService {
     return this.subject.asObservable();
   }
 
-  getCurrentRegionAndRatingValues(): object {
-    return {
-      response: this.response,
-      regions: this.regions,
-      currentRegion: this.currentRegion,
-      currentRating: this.currentRating
-    };
-  }
-
   resendRegionsAndRatings(): void {
     this.subject.next({
       response: this.response,

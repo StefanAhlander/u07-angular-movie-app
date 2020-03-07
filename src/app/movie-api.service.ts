@@ -47,7 +47,7 @@ export class MovieApiService {
     rating: string,
     sort: string = 'popularity'
   ): Observable<any> {
-    if (rating === undefined) {
+    if (region === undefined || rating === undefined) {
       return of({
         results: []
       });
