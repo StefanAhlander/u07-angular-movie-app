@@ -20,6 +20,7 @@ import { HighestRatedComponent } from './highest-rated/highest-rated.component';
 // Services
 import { MovieApiService } from './movie-api.service';
 import { RatingsService } from './ratings.service';
+import { CastListComponent } from './cast-list/cast-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RatingsService } from './ratings.service';
     MovieListItemComponent,
     MovieDetailComponent,
     PopularComponent,
-    HighestRatedComponent
+    HighestRatedComponent,
+    CastListComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [MovieApiService, RatingsService],

@@ -5,7 +5,6 @@ import { API_CONFIG } from '../../api-config';
 
 import { MovieApiService } from '../movie-api.service';
 import { Movie } from '../models/movie.model';
-import { Actor } from '../models/Actor.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -28,7 +27,6 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.getMovie();
-    this.getCredits();
   }
 
   getMovie(): void {
@@ -37,23 +35,9 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(movie => (this.movie = movie));
   }
 
-  getCredits(): void {
-    this.movieApiService.getMovieCredits(this.id).subscribe(credits => {
-      this.credits = credits;
-      this.cast = credits.cast.sort((a, b) => a.order - b.order);
-    });
-  }
-
   getImageUri(movie: Movie): string {
     if (movie.poster_path) {
       return this.imageUri + movie.poster_path;
-    }
-    return '../../assets/film-placeholder.jpg';
-  }
-
-  getActorProfileUri(actor: Actor): string {
-    if (actor.profile_path) {
-      return this.imageUri + actor.profile_path;
     }
     return '../../assets/film-placeholder.jpg';
   }
