@@ -13,8 +13,6 @@ import { Movie } from '../models/movie.model';
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
-  credits: object;
-  cast: any[];
   id: number;
   imageUri = API_CONFIG['image-url'];
 

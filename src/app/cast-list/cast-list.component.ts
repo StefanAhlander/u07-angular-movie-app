@@ -1,4 +1,4 @@
-import { Component, OnInit, Import, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { API_CONFIG } from '../../api-config';
 import { MovieApiService } from '../movie-api.service';
 import { Actor } from '../models/Actor.model';
@@ -35,10 +35,13 @@ export class CastListComponent implements OnInit {
 
     switch (actor.gender) {
       case 0:
-        gender = 'male_placeholder.jpg';
+        gender = 'neutral_placeholder.png';
         break;
       case 1:
         gender = 'female_placeholder.jpg';
+        break;
+      case 2:
+        gender = 'male_placeholder.jpg';
         break;
       default:
         gender = 'neutral_placeholder.png';

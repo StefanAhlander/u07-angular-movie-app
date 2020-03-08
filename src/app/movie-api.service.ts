@@ -25,23 +25,12 @@ export class MovieApiService {
     return this.httpClient.get<any>(indexURL);
   }
 
-  // Index mock
-  /*  index(region: string, rating: string): Observable<any> {
-    const indexURL = `${this.apiURL}/3/discover/movie?certification_country=${region}&certification=${rating}&sort_by=popularity.desc&${this.apiKey}`;
-    console.log(indexURL);
-
-    return of(response);
-  } */
-
   getTrendingMovies(): any {
-    // https://api.themoviedb.org/3/trending/movie/week?api_key=229892a346e23c25dab8248e8fb0b8f8
-
     const trendingUrl = `${this.apiURL}/3/trending/movie/week?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(trendingUrl);
   }
 
-  // The real index
   index(
     region: string,
     rating: string,
@@ -78,5 +67,10 @@ export class MovieApiService {
     return this.httpClient.get<any>(creditsUrl);
   }
 
-  // Todo: Get actor by id
+  getActor(id: number): Observable<any> {
+    const actorUrl = `${this.apiURL}/3/person/${id}?api_key=${this.apiKey}`;
+    console.log(actorUrl);
+
+    return this.httpClient.get<any>(actorUrl);
+  }
 }

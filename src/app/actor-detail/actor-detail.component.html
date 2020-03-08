@@ -1,0 +1,38 @@
+<button
+  type="button"
+  class="btn btn-secondary mt-2 mb-2 ml-2"
+  (click)="goBack()"
+>
+  Go back
+</button>
+
+<div *ngIf="actor">
+  <div class="row justify-content-center">
+    <div class="card mb-2 col-12 col-sm-10 col-md-8 col-lg-6">
+      <h5 class="card-header text-center">{{ actor.name }}</h5>
+      <img
+        class="card-img-top"
+        [src]="getActorProfileUri(actor)"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center">
+            Place of birth: {{ actor.place_of_birth }}
+          </li>
+          <li class="list-group-item text-center">
+            Birthday: {{ actor.birthday }}
+          </li>
+          <li *ngIf="actor.deathday" class="list-group-item">
+            Died: {{ actor.deathday }}
+          </li>
+          <li class="list-group-item text-center">Age: {{ age }}</li>
+        </ul>
+        <h5 class="text-center">Biography</h5>
+        <p class="card-text">
+          {{ actor.biography }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
