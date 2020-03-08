@@ -21,20 +21,26 @@ export class PopularComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService
-      .getRegionAndRating()
-      .subscribe(regionAndRating => {
+    this.subscription = this.ratingsService.getRegionAndRating().subscribe(
+      regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;
         this.getPopular();
-      });
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
     this.ratingsService.resendRegionsAndRatings();
   }
 
   getPopular(): any {
-    this.movieApiService
-      .index(this.region, this.rating, 'popular')
-      .subscribe(movies => (this.movies = movies.results));
+    this.movieApiService.index(this.region, this.rating, 'popular').subscribe(
+      movies => (this.movies = movies.results),
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

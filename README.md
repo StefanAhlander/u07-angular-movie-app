@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Configuration
+
+To get the app running after cloning it from GitHub you need to add a "app-config.ts" file in the same directory as the index.html file.
+
+The contents of this app-config.ts file is as follows:
+
+- export const API_CONFIG = {
+- 'api-key': '<< substitute for your api key >>',
+- 'api-url': 'https://api.themoviedb.org',
+- 'image-url': 'https://image.tmdb.org/t/p/w500'
+- };

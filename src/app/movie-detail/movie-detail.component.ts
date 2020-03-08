@@ -28,9 +28,12 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getMovie(): void {
-    this.movieApiService
-      .getMovie(this.id)
-      .subscribe(movie => (this.movie = movie));
+    this.movieApiService.getMovie(this.id).subscribe(
+      movie => (this.movie = movie),
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   getImageUri(movie: Movie): string {

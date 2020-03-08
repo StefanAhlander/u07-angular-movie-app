@@ -21,10 +21,15 @@ export class CastListComponent implements OnInit {
   }
 
   getCredits(): void {
-    this.movieApiService.getMovieCredits(this.id).subscribe(credits => {
-      this.credits = credits;
-      this.cast = credits.cast.sort((a, b) => a.order - b.order);
-    });
+    this.movieApiService.getMovieCredits(this.id).subscribe(
+      credits => {
+        this.credits = credits;
+        this.cast = credits.cast.sort((a, b) => a.order - b.order);
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   getActorProfileUri(actor: Actor): string {

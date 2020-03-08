@@ -1,24 +1,26 @@
-<h2 class="font-weight-light text-center">
-  Cast
-</h2>
-<div class="container-fluid" style="overflow-x: scroll;">
-  <div class="d-flex flex-row flex-nowrap">
-    <div *ngFor="let actor of cast" class="col-7 col-sm-5 col-md-3 col-lg-2">
-      <div class="card">
-        <img
-          class="card-img-top"
-          [src]="getActorProfileUri(actor)"
-          alt="Card image cap"
-        />
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Character: {{ actor.character }}</li>
-          <li class="list-group-item">Name: {{ actor.name }}</li>
-          <li class="list-group-item text-center">
-            <a class="btn btn-dark" routerLink="/actors/{{ actor.id }}"
-              >More info.</a
-            >
-          </li>
-        </ul>
+<div *ngIf="cast">
+  <h2 class="font-weight-light text-center">
+    Cast
+  </h2>
+  <div class="container-fluid" style="overflow-x: scroll;">
+    <div class="d-flex flex-row flex-nowrap">
+      <div *ngFor="let actor of cast" class="col-7 col-sm-5 col-md-3 col-lg-2">
+        <div class="card">
+          <img
+            class="card-img-top"
+            [src]="getActorProfileUri(actor)"
+            alt="Card image cap"
+          />
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Character: {{ actor.character }}</li>
+            <li class="list-group-item">Name: {{ actor.name }}</li>
+            <li class="list-group-item text-center">
+              <a class="btn btn-dark" routerLink="/actors/{{ actor.id }}"
+                >More info.</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

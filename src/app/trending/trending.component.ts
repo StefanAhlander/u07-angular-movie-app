@@ -21,20 +21,26 @@ export class TrendingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService
-      .getRegionAndRating()
-      .subscribe(regionAndRating => {
+    this.subscription = this.ratingsService.getRegionAndRating().subscribe(
+      regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;
         this.getTrending();
-      });
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
     this.ratingsService.resendRegionsAndRatings();
   }
 
   getTrending(): any {
-    this.movieApiService
-      .getTrendingMovies()
-      .subscribe(movies => (this.movies = movies.results));
+    this.movieApiService.getTrendingMovies().subscribe(
+      (movies: { results: Movie[] }) => (this.movies = movies.results),
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

@@ -22,19 +22,24 @@ export class RatingsComponent implements OnInit {
   }
 
   populateVars(): void {
-    this.ratingsService.getRegionAndRating().subscribe((data: any) => {
-      if (data.response === undefined) {
-        return;
+    this.ratingsService.getRegionAndRating().subscribe(
+      (data: any) => {
+        if (data.response === undefined) {
+          return;
+        }
+        this.response = data.response;
+        this.regions = data.regions;
+        this.currentRegion = data.region;
+        this.currentRating = data.rating;
+        this.ratings = this.response.certifications[this.currentRegion];
+        this.ratingDesc = this.response.certifications[data.region].filter(
+          i => i.certification === data.rating
+        )[0].meaning;
+      },
+      error => {
+        console.log(error);
       }
-      this.response = data.response;
-      this.regions = data.regions;
-      this.currentRegion = data.region;
-      this.currentRating = data.rating;
-      this.ratings = this.response.certifications[this.currentRegion];
-      this.ratingDesc = this.response.certifications[data.region].filter(
-        i => i.certification === data.rating
-      )[0].meaning;
-    });
+    );
   }
 
   onRegionChange(region: string): void {

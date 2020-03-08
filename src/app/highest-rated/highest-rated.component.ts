@@ -21,13 +21,16 @@ export class HighestRatedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService
-      .getRegionAndRating()
-      .subscribe(regionAndRating => {
+    this.subscription = this.ratingsService.getRegionAndRating().subscribe(
+      regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;
         this.getHighestRated();
-      });
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
     this.ratingsService.resendRegionsAndRatings();
   }
@@ -35,6 +38,11 @@ export class HighestRatedComponent implements OnInit {
   getHighestRated(): any {
     this.movieApiService
       .index(this.region, this.rating, 'average_vote')
-      .subscribe(movies => (this.movies = movies.results));
+      .subscribe(
+        movies => (this.movies = movies.results),
+        error => {
+          console.error(error);
+        }
+      );
   }
 }
