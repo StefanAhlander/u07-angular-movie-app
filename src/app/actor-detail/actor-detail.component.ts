@@ -31,15 +31,18 @@ export class ActorDetailComponent implements OnInit {
   getActor(): void {
     this.movieApiService.getActor(this.id).subscribe(actor => {
       this.actor = actor;
-      let now;
-      if (actor.deathday) {
-        now = new Date(actor.deathday).getTime();
-      } else {
-        now = Date.now();
+
+      if (actor.birthday) {
+        const birth = new Date(actor.birthday).getTime();
+        let now;
+        if (actor.deathday) {
+          now = new Date(actor.deathday).getTime();
+        } else {
+          now = Date.now();
+        }
+        const timeDiff: number = now - birth;
+        this.age = Math.floor(timeDiff / 31536000000);
       }
-      const birth = new Date(actor.birthday).getTime();
-      const timeDiff: number = now - birth;
-      this.age = Math.floor(timeDiff / 31536000000);
     });
   }
 

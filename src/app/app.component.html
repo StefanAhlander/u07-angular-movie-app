@@ -1,52 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a
-    class="navbar-brand"
-    [routerLink]="['']"
-    routerLinkActive="router-link-active"
-    >Movie App</a
-  >
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a
+      class="navbar-brand"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      >Movie App</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['movies/trending']"
-          routerLinkActive="active"
-          >Trending</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['movies/popular']"
-          routerLinkActive="active"
-          >Popular</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['movies/highest-rated']"
-          routerLinkActive="active"
-          >Highest rated</a
-        >
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['movies/trending']"
+            routerLinkActive="active"
+            >Trending</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['movies/popular']"
+            routerLinkActive="active"
+            >Popular</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['movies/highest-rated']"
+            routerLinkActive="active"
+            >Highest rated</a
+          >
+        </li>
+      </ul>
       <app-search></app-search>
-    </ul>
-  </div>
-</nav>
-<app-search-results></app-search-results>
+    </div>
+  </nav>
+  <app-search-results></app-search-results>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

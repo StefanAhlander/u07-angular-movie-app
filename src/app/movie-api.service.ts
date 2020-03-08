@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_CONFIG } from '../api-config';
 
@@ -15,18 +14,18 @@ export class MovieApiService {
   };
 
   private apiKey = API_CONFIG['api-key'];
-  private apiURL = API_CONFIG['api-url'];
+  private apiUrl = API_CONFIG['api-url'];
 
   constructor(private httpClient: HttpClient) {}
 
   getRatings(): Observable<any> {
-    const indexURL = `${this.apiURL}/3/certification/movie/list?api_key=${this.apiKey}`;
+    const indexURL = `${this.apiUrl}/3/certification/movie/list?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(indexURL);
   }
 
   getTrendingMovies(): any {
-    const trendingUrl = `${this.apiURL}/3/trending/movie/week?api_key=${this.apiKey}`;
+    const trendingUrl = `${this.apiUrl}/3/trending/movie/week?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(trendingUrl);
   }
@@ -50,27 +49,38 @@ export class MovieApiService {
       `api_key=${this.apiKey}`
     ].join('&');
 
-    const indexURL = `${this.apiURL}${params}`;
+    const indexURL = `${this.apiUrl}${params}`;
 
     return this.httpClient.get<any>(indexURL);
   }
 
   getMovie(id: number): Observable<any> {
-    const movieUrl = `${this.apiURL}/3/movie/${id}?api_key=${this.apiKey}`;
+    const movieUrl = `${this.apiUrl}/3/movie/${id}?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(movieUrl);
   }
 
   getMovieCredits(id: number): Observable<any> {
-    const creditsUrl = `${this.apiURL}/3/movie/${id}/credits?api_key=${this.apiKey}`;
+    const creditsUrl = `${this.apiUrl}/3/movie/${id}/credits?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(creditsUrl);
   }
 
   getActor(id: number): Observable<any> {
-    const actorUrl = `${this.apiURL}/3/person/${id}?api_key=${this.apiKey}`;
-    console.log(actorUrl);
+    const actorUrl = `${this.apiUrl}/3/person/${id}?api_key=${this.apiKey}`;
 
     return this.httpClient.get<any>(actorUrl);
+  }
+
+  // https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+  search(query: string): Observable<any> {
+    const params: string = [`query=${query}`, `api_key=${this.apiKey}`].join(
+      '&'
+    );
+    const queryUrl = `${this.apiUrl}/3/search/multi?${params}`;
+
+    console.log(queryUrl);
+
+    return this.httpClient.get(queryUrl);
   }
 }

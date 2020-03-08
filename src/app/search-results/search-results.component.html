@@ -1,1 +1,6 @@
-<p>search-results works!</p>
+<div *ngIf="searchResults">
+  <div *ngFor="let i of searchResults">
+    <div *ngIf="i.media_type === 'movie'">Movie: {{ i.title }}</div>
+    <div *ngIf="i.media_type === 'person'">Actor: {{ i.name }}</div>
+  </div>
+</div>
