@@ -32,8 +32,8 @@ To get the app running after cloning it from GitHub you need to add a "app-confi
 
 The contents of this app-config.ts file is as follows:
 
-- export const API_CONFIG = {
-- 'api-key': '<< substitute for your api key >>',
-- 'api-url': 'https://api.themoviedb.org',
-- 'image-url': 'https://image.tmdb.org/t/p/w500'
-- };
+`export const API_CONFIG = {`
+`'api-key': '<< substitute for your api key >>',`
+`'api-url': 'https://api.themoviedb.org',`
+`'image-url': 'https://image.tmdb.org/t/p/w500'`
+`};`
