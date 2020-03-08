@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Configuration
 
-To get the app running after cloning it from GitHub you need to add a "app-config.ts" file in the same directory as the index.html file.
+To get the app running after cloning it from GitHub you need to add a "api-config.ts" file in the same directory as the index.html file.
 
 The contents of this app-config.ts file is as follows:
 
