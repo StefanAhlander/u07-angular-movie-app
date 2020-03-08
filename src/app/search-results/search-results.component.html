@@ -1,6 +1,14 @@
 <div *ngIf="searchResults">
   <div *ngFor="let i of searchResults">
-    <div *ngIf="i.media_type === 'movie'">Movie: {{ i.title }}</div>
-    <div *ngIf="i.media_type === 'person'">Actor: {{ i.name }}</div>
+    <div *ngIf="i.media_type === 'movie'">
+      <div (click)="goTo('/movies', i.id)" class="card mb-1 my-card">
+        <h5 class="ml-2 p-1">Movie: {{ i.title }}</h5>
+      </div>
+    </div>
+    <div *ngIf="i.media_type === 'person'">
+      <div (click)="goTo('/actors', i.id)" class="card mb-1 my-card">
+        <h5 class="ml-2 p-1">Actor: {{ i.name }}</h5>
+      </div>
+    </div>
   </div>
 </div>

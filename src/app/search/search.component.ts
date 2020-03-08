@@ -10,6 +10,7 @@ import { SearchService } from '../search.service';
 export class SearchComponent implements OnInit {
   searchResult: any;
   timer: any;
+  searchValue = '';
 
   constructor(
     private movieApiService: MovieApiService,

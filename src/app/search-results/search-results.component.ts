@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
@@ -9,7 +10,7 @@ import { SearchService } from '../search.service';
 export class SearchResultsComponent implements OnInit {
   searchResults: any[];
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService, private router: Router) {}
 
   ngOnInit(): void {
     this.searchService.getResults().subscribe(
@@ -20,5 +21,10 @@ export class SearchResultsComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  goTo(path: string, id: number): void {
+    this.searchResults = null;
+    this.router.navigate([path, id]);
   }
 }
