@@ -78,7 +78,7 @@ export class MovieApiService {
       '&'
     );
     const queryUrl = `${this.apiUrl}/3/search/multi?${params}`;
-
+    console.log(queryUrl);
     return this.httpClient.get(queryUrl);
   }
 }

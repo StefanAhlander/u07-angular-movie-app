@@ -9,4 +9,5 @@ export interface Actor {
   deathday?: string;
   biography?: string;
   place_of_birth?: string;
+  known_for?: any;
 }
