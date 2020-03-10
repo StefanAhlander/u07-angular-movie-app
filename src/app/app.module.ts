@@ -22,6 +22,7 @@ import { MovieApiService } from './movie-api.service';
 import { RatingsService } from './ratings.service';
 import { CastListComponent } from './cast-list/cast-list.component';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
     PopularComponent,
     HighestRatedComponent,
     CastListComponent,
-    ActorDetailComponent
+    ActorDetailComponent,
+    FavouritesComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [MovieApiService, RatingsService],

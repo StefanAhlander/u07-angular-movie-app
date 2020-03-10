@@ -1,9 +1,23 @@
-<button
-  type="button"
-  class="btn btn-secondary mt-2 mb-2 ml-2"
-  (click)="goBack()"
->
+<button type="button" class="btn btn-secondary mt-2 mb-2" (click)="goBack()">
   Go back
+</button>
+
+<button
+  *ngIf="!isFavourite"
+  type="button"
+  class="btn btn-info mt-2 mb-2 float-right"
+  (click)="addToFavourites(movie)"
+>
+  Add to favourites
+</button>
+
+<button
+  *ngIf="isFavourite"
+  type="button"
+  class="btn btn-info mt-2 mb-2 float-right"
+  (click)="removeFromFavourites(movie)"
+>
+  Remove from favourites
 </button>
 
 <div *ngIf="movie">
