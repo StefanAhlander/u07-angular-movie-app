@@ -25,6 +25,7 @@ export class SearchResultsComponent implements OnInit {
 
   goTo(path: string, id: number): void {
     this.searchResults = null;
+    document.querySelector('#searchBox').value = '';
     this.router.navigate([path, id]);
   }
 }
