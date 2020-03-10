@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
 import { RatingsService } from '../ratings.service';
 import { Subscription } from 'rxjs';
-import { Movie } from '../models/Movie.model';
+import { IMovie } from '../models/imovie.model';
 
 @Component({
   selector: 'app-trending',
@@ -10,7 +10,7 @@ import { Movie } from '../models/Movie.model';
   styleUrls: ['./trending.component.scss']
 })
 export class TrendingComponent implements OnInit {
-  movies: Movie[];
+  movies: IMovie[];
   region: string;
   rating: string;
   subscription: Subscription;
@@ -37,7 +37,7 @@ export class TrendingComponent implements OnInit {
 
   getTrending(): any {
     this.movieApiService.getTrendingMovies().subscribe(
-      (movies: { results: Movie[] }) => (this.movies = movies.results),
+      (movies: { results: IMovie[] }) => (this.movies = movies.results),
       error => {
         console.error(error);
       }

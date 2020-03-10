@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../models/Movie.model';
+import { IMovie } from '../models/imovie.model';
 import { FavouritesService } from '../favourites.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { FavouritesService } from '../favourites.service';
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent implements OnInit {
-  favourites: Movie[] | undefined;
+  favourites: IMovie[] | undefined;
   hasFavourites: boolean;
 
   constructor(private favouritesService: FavouritesService) {}
@@ -22,9 +22,9 @@ export class FavouritesComponent implements OnInit {
     this.hasFavourites = this.favourites.length > 0;
   }
 
-  addToFavourites(movie: Movie): void {}
+  addToFavourites(movie: IMovie): void {}
 
-  removeFromFavourites(movie: Movie): void {
+  removeFromFavourites(movie: IMovie): void {
     this.favouritesService.removeFromFavourites(movie);
     this.getFavourites();
   }

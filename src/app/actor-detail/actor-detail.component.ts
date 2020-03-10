@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { API_CONFIG } from '../../api-config';
 
 import { MovieApiService } from '../movie-api.service';
-import { Actor } from '../models/Actor.model';
+import { IActor } from '../models/iactor.model';
 
 @Component({
   selector: 'app-actor-detail',
@@ -12,7 +12,7 @@ import { Actor } from '../models/Actor.model';
   styleUrls: ['./actor-detail.component.scss']
 })
 export class ActorDetailComponent implements OnInit {
-  actor: Actor;
+  actor: IActor;
   id: number;
   age: number;
   imageUri = API_CONFIG['image-url'];
@@ -51,7 +51,7 @@ export class ActorDetailComponent implements OnInit {
     );
   }
 
-  getActorProfileUri(actor: Actor): string {
+  getActorProfileUri(actor: IActor): string {
     if (actor.profile_path) {
       return this.imageUri + actor.profile_path;
     }

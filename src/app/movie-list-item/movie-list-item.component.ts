@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from '../models/movie.model';
+import { IMovie } from '../models/imovie.model';
 import { API_CONFIG } from '../../api-config';
 
 @Component({
@@ -8,14 +8,14 @@ import { API_CONFIG } from '../../api-config';
   styleUrls: ['./movie-list-item.component.scss']
 })
 export class MovieListItemComponent implements OnInit {
-  @Input() movie: Movie;
+  @Input() movie: IMovie;
   imageUri = API_CONFIG['image-url'];
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  getImageUri(movie: Movie): string {
+  getImageUri(movie: IMovie): string {
     if (movie.poster_path) {
       return this.imageUri + movie.poster_path;
     }

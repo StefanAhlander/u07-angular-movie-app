@@ -5,7 +5,7 @@ import { API_CONFIG } from '../../api-config';
 
 import { MovieApiService } from '../movie-api.service';
 import { FavouritesService } from '../favourites.service';
-import { Movie } from '../models/movie.model';
+import { IMovie } from '../models/imovie.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,7 +13,7 @@ import { Movie } from '../models/movie.model';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  movie: Movie;
+  movie: IMovie;
   id: number;
   imageUri = API_CONFIG['image-url'];
   isFavourite: boolean;
@@ -42,19 +42,19 @@ export class MovieDetailComponent implements OnInit {
     );
   }
 
-  getImageUri(movie: Movie): string {
+  getImageUri(movie: IMovie): string {
     if (movie.poster_path) {
       return this.imageUri + movie.poster_path;
     }
     return '../../assets/film-placeholder.jpg';
   }
 
-  addToFavourites(movie: Movie): void {
+  addToFavourites(movie: IMovie): void {
     this.favouritesService.addToFavourites(movie);
     this.isFavourite = true;
   }
 
-  removeFromFavourites(movie: Movie): void {
+  removeFromFavourites(movie: IMovie): void {
     this.favouritesService.removeFromFavourites(movie);
     this.isFavourite = false;
   }

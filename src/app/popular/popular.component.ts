@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
 import { RatingsService } from '../ratings.service';
 import { Subscription } from 'rxjs';
-import { Movie } from '../models/Movie.model';
+import { IMovie } from '../models/imovie.model';
 
 @Component({
   selector: 'app-popular',
@@ -10,7 +10,7 @@ import { Movie } from '../models/Movie.model';
   styleUrls: ['./popular.component.scss']
 })
 export class PopularComponent implements OnInit {
-  movies: Movie[];
+  movies: IMovie[];
   region: string;
   rating: string;
   subscription: Subscription;

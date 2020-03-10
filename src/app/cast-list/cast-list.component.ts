@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { API_CONFIG } from '../../api-config';
 import { MovieApiService } from '../movie-api.service';
-import { Actor } from '../models/Actor.model';
+import { IActor } from '../models/iactor.model';
 
 @Component({
   selector: 'app-cast-list',
@@ -32,7 +32,7 @@ export class CastListComponent implements OnInit {
     );
   }
 
-  getActorProfileUri(actor: Actor): string {
+  getActorProfileUri(actor: IActor): string {
     if (actor.profile_path) {
       return this.imageUri + actor.profile_path;
     }
