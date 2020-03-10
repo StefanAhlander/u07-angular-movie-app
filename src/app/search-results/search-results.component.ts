@@ -27,6 +27,7 @@ export class SearchResultsComponent implements OnInit {
     this.searchResults = null;
     const searchBoxElm: HTMLInputElement = document.querySelector('#searchBox');
     searchBoxElm.value = '';
+    //this.searchService.setResults([]);
     this.router.navigate([path, id]);
   }
 }

@@ -21,14 +21,16 @@ export class SearchComponent implements OnInit {
 
   search(query: string): void {
     this.searchResult = null;
-    if (query.length < 2) {
-      return;
-    }
     clearTimeout(this.timer);
     this.timer = setTimeout(this.executeSearch.bind(this), 250, query);
   }
 
   executeSearch(query: string): void {
+    if (query === '') {
+      this.searchService.setResults(null);
+      return;
+    }
+
     this.movieApiService.search(query).subscribe(
       success => {
         this.searchResult = success.results.filter(
