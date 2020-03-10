@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
-import { RatingsService } from '../ratings.service';
-import { Subscription } from 'rxjs';
 import { IMovie } from '../models/imovie.model';
 
 @Component({
@@ -11,28 +9,11 @@ import { IMovie } from '../models/imovie.model';
 })
 export class TrendingComponent implements OnInit {
   movies: IMovie[];
-  region: string;
-  rating: string;
-  subscription: Subscription;
 
-  constructor(
-    private movieApiService: MovieApiService,
-    private ratingsService: RatingsService
-  ) {}
+  constructor(private movieApiService: MovieApiService) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService.getRegionAndRating().subscribe(
-      regionAndRating => {
-        this.region = regionAndRating.region;
-        this.rating = regionAndRating.rating;
-        this.getTrending();
-      },
-      error => {
-        console.error(error);
-      }
-    );
-
-    this.ratingsService.resendRegionsAndRatings();
+    this.getTrending();
   }
 
   getTrending(): any {

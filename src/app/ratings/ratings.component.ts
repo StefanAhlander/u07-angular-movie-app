@@ -22,7 +22,7 @@ export class RatingsComponent implements OnInit {
   }
 
   populateVars(): void {
-    this.ratingsService.getRegionAndRating().subscribe(
+    this.ratingsService.regionsAndRatings.subscribe(
       (data: any) => {
         if (data.response === undefined) {
           return;

@@ -21,7 +21,7 @@ export class PopularComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService.getRegionAndRating().subscribe(
+    this.subscription = this.ratingsService.regionsAndRatings.subscribe(
       regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;

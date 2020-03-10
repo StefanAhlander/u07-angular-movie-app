@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RatingsService {
-  private subject = new Subject<any>();
+  public regionsAndRatings = new Subject<any>();
 
   response: any;
   regions: string[];
@@ -43,15 +43,11 @@ export class RatingsService {
   ): void {
     this.currentRegion = region;
     this.currentRating = rating;
-    this.subject.next({ response, regions, region, rating });
-  }
-
-  getRegionAndRating(): Observable<any> {
-    return this.subject.asObservable();
+    this.regionsAndRatings.next({ response, regions, region, rating });
   }
 
   resendRegionsAndRatings(): void {
-    this.subject.next({
+    this.regionsAndRatings.next({
       response: this.response,
       regions: this.regions,
       region: this.currentRegion,
