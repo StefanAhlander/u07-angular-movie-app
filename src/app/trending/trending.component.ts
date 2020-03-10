@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
 import { IMovie } from '../models/imovie.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trending',
@@ -8,7 +9,7 @@ import { IMovie } from '../models/imovie.model';
   styleUrls: ['./trending.component.scss']
 })
 export class TrendingComponent implements OnInit {
-  movies: IMovie[];
+  movies$: Observable<any>;
 
   constructor(private movieApiService: MovieApiService) {}
 
@@ -17,11 +18,6 @@ export class TrendingComponent implements OnInit {
   }
 
   getTrending(): any {
-    this.movieApiService.getTrendingMovies().subscribe(
-      (movies: { results: IMovie[] }) => (this.movies = movies.results),
-      error => {
-        console.error(error);
-      }
-    );
+    this.movies$ = this.movieApiService.getTrendingMovies();
   }
 }

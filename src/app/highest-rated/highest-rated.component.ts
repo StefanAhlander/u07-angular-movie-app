@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
 import { RatingsService } from '../ratings.service';
-import { Subscription } from 'rxjs';
-import { IMovie } from '../models/imovie.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-highest-rated',
@@ -10,10 +9,9 @@ import { IMovie } from '../models/imovie.model';
   styleUrls: ['./highest-rated.component.scss']
 })
 export class HighestRatedComponent implements OnInit {
-  movies: IMovie[];
+  movies$: Observable<any>;
   region: string;
   rating: string;
-  subscription: Subscription;
 
   constructor(
     private movieApiService: MovieApiService,
@@ -21,7 +19,7 @@ export class HighestRatedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.ratingsService.regionsAndRatings.subscribe(
+    this.ratingsService.regionsAndRatings.subscribe(
       regionAndRating => {
         this.region = regionAndRating.region;
         this.rating = regionAndRating.rating;
@@ -36,13 +34,10 @@ export class HighestRatedComponent implements OnInit {
   }
 
   getHighestRated(): any {
-    this.movieApiService
-      .index(this.region, this.rating, 'average_vote')
-      .subscribe(
-        movies => (this.movies = movies.results),
-        error => {
-          console.error(error);
-        }
-      );
+    this.movies$ = this.movieApiService.index(
+      this.region,
+      this.rating,
+      'average_vote'
+    );
   }
 }
