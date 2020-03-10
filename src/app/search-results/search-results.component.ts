@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-  searchResults: any[];
+  searchResults: any;
 
   constructor(private searchService: SearchService, private router: Router) {}
 
   ngOnInit(): void {
-    this.searchService.getResults().subscribe(
+    this.searchService.searchResults.subscribe(
       success => {
         this.searchResults = success;
       },
@@ -25,7 +25,8 @@ export class SearchResultsComponent implements OnInit {
 
   goTo(path: string, id: number): void {
     this.searchResults = null;
-    document.querySelector('#searchBox').value = '';
+    const searchBoxElm: HTMLInputElement = document.querySelector('#searchBox');
+    searchBoxElm.value = '';
     this.router.navigate([path, id]);
   }
 }

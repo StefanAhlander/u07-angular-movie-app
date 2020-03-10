@@ -5,15 +5,15 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
-  private subject = new Subject();
+  public searchResults = new Subject();
 
   constructor() {}
 
-  setResults(results: object[]): void {
-    this.subject.next(results);
+  setResults(results: any): void {
+    this.searchResults.next(results);
   }
 
   getResults(): Observable<any> {
-    return this.subject.asObservable();
+    return this.searchResults.asObservable();
   }
 }
