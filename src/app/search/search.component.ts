@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
   }
 
   executeSearch(query: string): void {
-    if (query === '') {
+    if (query === '' || query.length <= 2) {
       this.searchService.setResults(null);
       return;
     }
